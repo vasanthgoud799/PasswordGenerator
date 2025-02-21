@@ -1,83 +1,163 @@
-*{
+* {
     padding: 0;
-    margin:0;
+    margin: 0;
     box-sizing: border-box;
-    font-family: sans-serif,'Lucida Sans';
+    font-family: 'Poppins', sans-serif;
 }
-body{
-    max-width:100%;
-    min-height:100vh;
-    display:flex;
+
+body {
+    display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to right bottom,rgb(33, 46, 33),rgb(109, 70, 70));
-    color:white; 
+    min-height: 100vh;
+    background: radial-gradient(circle at center, #1b1d29, #0a0a0f);
+    color: white;
 }
-.container{
-    
-    border:0.5px solid rgb(169, 152, 152);
-    box-shadow:5px 10px 2px rgb(135, 114, 114); 
-    border-radius:10px;
-    padding:28px 32px;
-    background:transparent;
-    display:flex;
-    flex-direction: column;
-    
+
+/* 🔹 3D Glassmorphism Container */
+.container {
+    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    padding: 30px;
+    width: 400px;
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out;
 }
-.container h1{
-    font-size:1.4rem;
-     margin-block:8px;
-    /* top and bottom margin */ 
+
+.container h1 {
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #78e08f;
 }
-.passbox{
-    background-color: #fff;
-    border:none;
-    outline:none;
-    padding:10px;
-    width:300px;
+
+/* 🔹 Password Box */
+.passbox {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    outline: none;
+    padding: 12px;
+    width: 100%;
     border-radius: 10px;
-    font-size: 20px;
-    margin-block:8px;
-    text-overflow: ellipsis;
+    font-size: 18px;
+    text-align: center;
+    color: #fff;
+    transition: 0.3s;
+    letter-spacing: 1.2px;
 }
-.row{
-    display:flex;
-    margin-block:8px;
+
+.passbox::placeholder {
+    color: rgba(255, 255, 255, 0.6);
 }
-.row p,label{
-    flex-basis:100%;
-    /*To give  Initial  width*/
+
+.passbox:focus {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #78e08f;
 }
-.row input[type="checkbox"]
-{
-    width:20px;
-    height:20px;
+
+/* 🔹 Copy Icon */
+.inputBox {
+    position: relative;
 }
-.genBtn{
-    outline:none;
-    border:none;
-    margin-block:8px ;
-    color:#fefdfd;
+
+.inputBox span {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 24px;
     cursor: pointer;
-    font-weight:200;
-    padding:12px 24px;
-    border-radius: 7px;
-    background-color: rgb(129, 159, 149);
-    font-size:19px;
+    transition: transform 0.2s ease-in-out;
 }
-.genBtn:hover{
-    background-color: rgb(118, 236, 118);
-    transition: background-color .5s;
+
+.inputBox span:hover {
+    transform: scale(1.1);
+    color: #78e08f;
 }
-.inputBox{
-position:relative;
+
+/* 🔹 Slider */
+#inputSlider {
+    width: 100%;
+    -webkit-appearance: none;
+    height: 8px;
+    background: linear-gradient(90deg, #4cd137, #44bd32);
+    outline: none;
+    border-radius: 5px;
+    transition: 0.3s;
 }
-.inputBox span{
-    position:absolute;
-    top:16px;
-    right:6px;
-    color:black;
-    font-size:28px;
+
+#inputSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border-radius: 50%;
     cursor: pointer;
-    z-index: 2;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transition: 0.3s;
+}
+
+#inputSlider::-webkit-slider-thumb:hover {
+    background: #4cd137;
+    transform: scale(1.1);
+}
+
+/* 🔹 Row Styling */
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* 🔹 Checkbox Styling */
+.row input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #4cd137;
+    transition: 0.3s;
+}
+
+.row input[type="checkbox"]:checked {
+    filter: drop-shadow(0 0 5px #4cd137);
+}
+
+/* 🔹 Button Styling */
+.genBtn {
+    outline: none;
+    border: none;
+    margin-top: 20px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #4cd137, #44bd32);
+    font-size: 18px;
+    transition: 0.4s;
+    box-shadow: 0px 4px 10px rgba(0, 255, 0, 0.4);
+}
+
+.genBtn:hover {
+    background: linear-gradient(135deg, #44bd32, #78e08f);
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 15px rgba(0, 255, 0, 0.6);
+}
+
+/* 🔹 Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
